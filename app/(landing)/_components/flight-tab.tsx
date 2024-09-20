@@ -36,18 +36,23 @@ export function FlightsTab() {
         form.setValue("fyingTo", flyingFrom, config);
     };
 
-    const { isDirty, isValid } = form.formState;
+    // const { isDirty, isValid } = form.formState;
 
-    const isDisabled = !isValid || !isDirty;
+    // const isDisabled = !isValid || !isDirty;
 
-    const onSearch = form.handleSubmit((data) => {
-        console.log("🚀 ~ onSearch ~ data:", data);
-    });
+    const onSearch = form.handleSubmit(
+        (data) => {
+            console.log("🚀 ~ onSearch ~ data:", data);
+        },
+        (error) => {
+            console.log("🚀 ~ onSearch ~ error:", error);
+        }
+    );
 
     return (
-        <div className="flex items-stretch overflow-hidden h-full pl-3">
+        <div className="flex items-stretch overflow-hidden smTablet:flex-row flex-col h-full px-3 smTablet:px-0 smTablet:pl-3 smTablet:h-[107px]">
             <div className="pr-9 flex flex-col">
-                <div className="border-b border-b-black pb-2 flex items-center">
+                <div className="border-b flex-col smTablet:flex-row border-b-black pb-1.5 flex items-start smTablet:items-center pt-3 smTablet:pt-0">
                     <Controller
                         control={form.control}
                         name="flyingFrom"
@@ -64,10 +69,10 @@ export function FlightsTab() {
                     <div className="relative">
                         <Separator
                             orientation="vertical"
-                            className="bg-black w-[0.3px] h-16 mr-9"
+                            className="bg-black w-[0.3px] mt-2 smTablet:mt-0 smTablet:h-16 mr-9 "
                         />
                         <Button
-                            className="p-0 bg-white border border-primary rounded-full absolute size-8 top-[25%] -left-[50%] translate-x-[5%] hover:bg-primary"
+                            className="p-0 bg-white border border-primary rounded-full absolute size-8 smTablet:top-[25%] smTablet:-left-[50%] smTablet:translate-x-[5%] hover:bg-primary flex -right-52 -top-2"
                             onClick={swapAirport}
                         >
                             <Image src={change} alt="change-icon" />
@@ -86,10 +91,9 @@ export function FlightsTab() {
                             />
                         )}
                     />
-
                     <Separator
                         orientation="vertical"
-                        className="bg-black w-[0.3px] h-16 mr-9"
+                        className="h-2 smTablet:bg-black w-[0.3px] smTablet:h-16 mx-4 smTablet:block"
                     />
 
                     <Controller
@@ -99,10 +103,9 @@ export function FlightsTab() {
                             <DateRangePicker onChange={onChange} value={value} />
                         )}
                     />
-
                     <Separator
                         orientation="vertical"
-                        className="bg-black w-[0.3px] h-16 mx-9"
+                        className="bg-black w-[0.3px]  mx-9 h-0 tablet:h-16"
                     />
 
                     <Controller
@@ -113,7 +116,7 @@ export function FlightsTab() {
                         )}
                     />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-start smTablet:h-3 smTablet:my-0 my-2 flex-wrap gap-2 smTablet:gap-0">
                     <Controller
                         control={form.control}
                         name="tripType"
@@ -205,7 +208,7 @@ export function FlightsTab() {
                         control={form.control}
                         name="directFlight"
                         render={({ field: { onChange, value } }) => (
-                            <div className="flex items-center space-x-2 ml-3 mr-8">
+                            <div className="flex items-center space-x-2 ml-3 mr-8 h-[12px] pt-2.5">
                                 <Checkbox
                                     checked={value}
                                     onCheckedChange={onChange}
@@ -225,7 +228,7 @@ export function FlightsTab() {
                         control={form.control}
                         name="flex"
                         render={({ field: { onChange, value } }) => (
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 h-[12px] pt-2.5">
                                 <Checkbox
                                     checked={value}
                                     onCheckedChange={onChange}
@@ -242,10 +245,9 @@ export function FlightsTab() {
                     />
                 </div>
             </div>
-            {/* */}
             <Button
-                className="bg-primary w-[140px] h-full rounded-md rounded-tl-none rounded-bl-none"
-                disabled={isDisabled}
+                className="bg-primary smTablet:w-[100px] rounded-md smTablet:rounded-tl-none smTablet:rounded-bl-none smTablet:h-auto  w-full my-3 smTablet:my-0"
+                // disabled={isDisabled}
                 onClick={() => onSearch()}
             >
                 <p className="font-[family-name:var(--font-lato-regular)] text-[20px] text-white font-semibold">
@@ -267,8 +269,8 @@ function Selector({
 }) {
     return (
         <Select value={value} onValueChange={onChange}>
-            <SelectTrigger className="border-none shadow-none max-w-40" asChild>
-                <div className="flex items-center gap-4 justify-between  w-full">
+            <SelectTrigger className="border-none shadow-none w-auto py-0 h-[12px] pt-2.5">
+                <div className="flex items-center gap-4">
                     <p className="text-primary font-[family-name:var(--font-laton-regular)] text-[13px]">
                         {options.find((item) => item.value === value)?.label}
                     </p>

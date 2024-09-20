@@ -20,70 +20,44 @@ export function DateRangePicker({
     value: { depart: Date; return: Date };
     onChange: (value: { depart?: Date; return?: Date }) => void;
 }) {
-
     return (
         <div className={cn("grid gap-2")}>
             <Popover>
                 <PopoverTrigger asChild>
-                    <div className="cursor-pointer flex items-center">
-                        {/* <CalendarIcon className="mr-2 h-4 w-4" />
-              {date?.from ? (
-                date.to ? (
-                  <>
-                    {format(date.from, "LLL dd, y")} -{" "}
-                    {format(date.to, "LLL dd, y")}
-                  </>
-                ) : (
-                  format(date.from, "LLL dd, y")
-                )
-              ) : (
-                <span>Pick a date</span>
-              )} */}
+                    <div className="cursor-pointer smTablet:flex items-center">
                         <div className="flex items-center gap-2">
                             <Image src={calendar} alt="calendar" />
-                            <div className="flex flex-col gap-2 ">
-                                <Title title="Depart Date" />
-                                <span className="font-[family-name:var(--font-lato-regular)] text-black text-base font-medium">
-                                    <span className="font-[family-name:var(--font-lato-regular)] text-black text-[24px] font-medium">
-                                        {
-                                            value.depart?.getDate()
-                                        }
+                            <div className="flex flex-col">
+                                <Title title="Depart" />
+                                <span className="font-[family-name:var(--font-lato-regular)] text-black text-[12px] smTablet:text-base font-medium">
+                                    <span className="font-[family-name:var(--font-lato-regular)] text-black text-[12px] smTablet:text-[16px] font-medium">
+                                        {value.depart?.getDate()}
                                     </span>{" "}
-                                    {
-                                        format(value.depart, 'MMM yy')
-                                    }
+                                    {format(value.depart, "MMM yy")}
                                 </span>
-                                <span className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[13px] font-semibold">
-                                    {
-                                        format(value.depart, 'EEEE')
-                                    }
+                                <span className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[14px] font-semibold">
+                                    {format(value.depart, "EEEE")}
                                 </span>
                             </div>
                         </div>
 
                         <Separator
                             orientation="vertical"
-                            className="bg-black w-[0.3px] h-16 mx-9"
+                            className="bg-black w-[0.3px] h-0 mt-2 smTablet:mt-3 smTablet:h-16 mx-9"
                         />
 
                         <div className="flex items-center gap-2">
                             <Image src={calendar} alt="calendar" />
-                            <div className="flex flex-col gap-2 ">
-                                <Title title="Depart Date" />
-                                <span className="font-[family-name:var(--font-lato-regular)] text-black text-base font-medium">
-                                    <span className="font-[family-name:var(--font-lato-regular)] text-black text-[24px] font-medium">
-                                        {
-                                            value.return?.getDate()
-                                        }
+                            <div className="flex flex-col">
+                                <Title title="Return" />
+                                <span className="font-[family-name:var(--font-lato-regular)] text-black text-[12px] smTablet:text-base font-medium">
+                                    <span className="font-[family-name:var(--font-lato-regular)] text-black text-[12px] smTablet:text-[16px] font-medium">
+                                        {value.return?.getDate()}
                                     </span>{" "}
-                                    {
-                                        format(value.return, 'MMM yy')
-                                    }
+                                    {format(value.return, "MMM yy")}
                                 </span>
-                                <span className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[13px] font-semibold">
-                                    {
-                                        format(value.return, 'EEEE')
-                                    }
+                                <span className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[14px] font-semibold">
+                                    {format(value.return, "EEEE")}
                                 </span>
                             </div>
                         </div>
@@ -95,10 +69,12 @@ export function DateRangePicker({
                         mode="range"
                         defaultMonth={value.depart}
                         selected={{ from: value.depart, to: value.return }}
-                        onSelect={(value) => onChange({
-                            depart: value?.from,
-                            return: value?.to
-                        })}
+                        onSelect={(value) =>
+                            onChange({
+                                depart: value?.from,
+                                return: value?.to,
+                            })
+                        }
                         numberOfMonths={2}
                     />
                 </PopoverContent>

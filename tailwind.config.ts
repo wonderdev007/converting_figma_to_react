@@ -9,6 +9,9 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: { 
+      smTablet: "1278px"
+    },
     extend: {
       textShadow: {
         "custom":

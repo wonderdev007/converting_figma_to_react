@@ -27,15 +27,15 @@ export function TravellersSelect({ value, onChange }: { value: FilterSchema['tra
             <PopoverTrigger asChild>
                 <div className="flex items-center gap-2 cursor-pointer">
                     <Image src={airlineSeat} alt="calendar" />
-                    <div className="flex flex-col gap-2 items-start">
-                        <Title title="Travellers & Class" />
-                        <span className="font-[family-name:var(--font-lato-regular)] text-black text-base font-medium">
-                            <span className="font-[family-name:var(--font-lato-regular)] text-black text-[24px] font-medium">
+                    <div className="flex flex-col items-start">
+                        <Title title="Passengers" />
+                        <span className="font-[family-name:var(--font-lato-regular)] text-black text-[12px] smTablet:text-base font-medium">
+                            <span className="font-[family-name:var(--font-lato-regular)] text-black text-[12px] smTablet:text-[16px] font-medium">
                                 {value.audults + value.childrens + value.infrants}
                             </span>{" "}
-                            Travellers
+                            Passengers
                         </span>
-                        <span className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[13px] font-semibold">
+                        <span className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[14px] font-semibold">
                             Economy
                         </span>
                     </div>

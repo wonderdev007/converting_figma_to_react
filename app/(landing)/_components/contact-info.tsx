@@ -21,7 +21,7 @@ export function ContactInfo() {
                             WhatsAPP
                         </span>
                         <Image
-                            className="absolute -top-2 -right-4"
+                            className="absolute -top-1 -right-5"
                             src={whatsappSvg}
                             alt="whatsapp"
                         />

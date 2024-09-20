@@ -44,17 +44,17 @@ export function AirPortPicker({
     ]
 
     return (
-        <div className="bg-white flex items-center gap-x-3 min-w-[300px]">
+        <div className="bg-white flex items-center gap-x-2 w-[270px]">
             <Image src={icon} alt="take-off" />
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
                 <Title title={title} />
                 <Select value={value} onValueChange={onChange}>
                     <SelectTrigger className="w-[180px] border-none p-0 h-full shadow-none">
-                        <div className="flex flex-col gap-2">
-                            <p className="font-[family-name:var(--font-lato-regular)] text-black text-[32px] font-semibold text-left">
+                        <div className="flex flex-col gap-0">
+                            <p className="font-[family-name:var(--font-lato-regular)] text-black text-[16px] font-medium text-left">
                                 {options.find(option => option.value === value)?.label}
                             </p>
-                            <p className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-base font-semibold">
+                            <p className="font-[family-name:var(--font-lato-regular)] text-[#575756] text-[12px] font-semibold">
                                 {options.find(option => option.value === value)?.description}
                             </p>
                         </div>
